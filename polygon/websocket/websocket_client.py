@@ -43,7 +43,7 @@ class WebSocketClient:
         signal.signal(signal.SIGTERM, self._cleanup_signal_handler())
 
     def run(self):
-        self.ws.run_forever()
+        self.ws.run_forever(skip_utf8_validation=True, sslopt={"cert_reqs": ssl.CERT_NONE})
 
     def run_async(self):
         self._run_thread = threading.Thread(target=self.run)
