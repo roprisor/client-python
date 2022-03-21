@@ -40,8 +40,8 @@ class WebSocketClient:
         # TODO: this probably isn't great design.
         #  If the user defines their own signal handler then this will gets overwritten.
         #  We still need to make sure that killing, terminating, interrupting the program closes the connection
-        signal.signal(signal.SIGINT, self._cleanup_signal_handler())
-        signal.signal(signal.SIGTERM, self._cleanup_signal_handler())
+        # signal.signal(signal.SIGINT, self._cleanup_signal_handler())
+        # signal.signal(signal.SIGTERM, self._cleanup_signal_handler())
 
     def run(self):
         self.ws.run_forever(skip_utf8_validation=True, sslopt={"cert_reqs": ssl.CERT_NONE})
